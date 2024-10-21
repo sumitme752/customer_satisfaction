@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Feedback Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Customer Feedback Form</h2>
+    <form action="/" method="POST">
+
+        <!-- Customer Type -->
+        <div class="form-group">
+            <label for="customer-type">Customer Type:</label>
+            <select id="customer-type" name="customer_type" required>
+                <option value="Loyal Customer">Loyal Customer</option>
+                <option value="Disloyal Customer">Disloyal Customer</option>
+            </select>
+        </div>
+
+        <!-- Age -->
+        <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" min="0" required>
+        </div>
+
+        <!-- Type of Travel -->
+        <div class="form-group">
+            <label for="type-of-travel">Type of Travel:</label>
+            <select id="type-of-travel" name="type_of_travel" required>
+                <option value="Business">Business travel</option>
+                <option value="Personal">Personal travel</option>
+            </select>
+        </div>
+
+        <!-- Class -->
+        <div class="form-group">
+            <label for="class">Class:</label>
+            <select id="class" name="class" required>
+                <option value="Business">Business</option>
+                <option value="Eco">Eco</option>
+                <option value="Eco Plus">Eco Plus</option>
+            </select>
+        </div>
+
+        <!-- Flight Distance -->
+        <div class="form-group">
+            <label for="flight-distance">Flight Distance (in km):</label>
+            <input type="number" id="flight-distance" name="flight_distance" min="0" required>
+        </div>
+
+        <!-- Rating Inputs (1 to 5) -->
+
+        <div class="form-group">
+            <label for="wifi-service">Inflight WiFi Service:</label>
+            <input type="number" id="wifi-service" name="inflight_wifi_service" min="0" max="5" required>
+        </div>
+
+        <div class="form-group">
+            <label for="convenience">Departure/Arrival Time Convenience:</label>
+            <input type="number" id="convenience" name="departure_arrival_convenience" min="1" max="5" required>
+        </div>
+
+        <div class="form-group">
+            <label for="online-booking">Ease of Online Booking:</label>
+            <input type="number" id="online-booking" name="ease_of_online_booking" min="1" max="5" required>
+        </div>
+
+        <div class="form-group">
+            <label for="gate-location">Gate Location:</label>
+            <input type="number" id="gate-location" name="gate_location" min="1" max="5" required>
+        </div>
+
+        <div class="form-group">
+            <label for="food-drink">Food and Drink:</label>
+            <input type="number" id="food-drink" name="food_and_drink" min="1" max="5" required>
+        </div>
+
+        <div class="form-group">
+            <label for="online-boarding">Online Boarding:</label>
+            <input type="number" id="online-boarding" name="online_boarding" min="1" max="5" required>
+        </div>
+
+        <div class="form-group">
+            <label for="seat-comfort">Seat Comfort:</label>
+            <input type="number" id="seat-comfort" name="seat_comfort" min="1" max="5" required>
+        </div>
+
+        <div class="form-group">
+            <label for="inflight-entertainment">Inflight Entertainment:</label>
+            <input type="number" id="inflight-entertainment" name="inflight_entertainment" min="1" max="5" required>
+        </div>
+
+        <div class="form-group">
+            <label for="onboard-service">On-board Service:</label>
+            <input type="number" id="onboard-service" name="onboard_service" min="1" max="5" required>
+        </div>
+
+        <div class="form-group">
+            <label for="leg-room">Leg Room Service:</label>
+            <input type="number" id="leg-room" name="leg_room_service" min="1" max="5" required>
+        </div>
+
+        <div class="form-group">
+            <label for="baggage-handling">Baggage Handling:</label>
+            <input type="number" id="baggage-handling" name="baggage_handling" min="1" max="5" required>
+        </div>
+
+        <div class="form-group">
+            <label for="checkin-service">Checkin Service:</label>
+            <input type="number" id="checkin-service" name="checkin_service" min="1" max="5" required>
+        </div>
+
+        <div class="form-group">
+            <label for="inflight-service">Inflight Service:</label>
+            <input type="number" id="inflight-service" name="inflight_service" min="1" max="5" required>
+        </div>
+
+        <div class="form-group">
+            <label for="cleanliness">Cleanliness:</label>
+            <input type="number" id="cleanliness" name="cleanliness" min="1" max="5" required>
+        </div>
+
+        <!-- Delays -->
+        <div class="form-group">
+            <label for="departure-delay">Departure Delay (in Minutes):</label>
+            <input type="number" id="departure-delay" name="departure_delay_in_minutes" min="0" required>
+        </div>
+
+        <div class="form-group">
+            <label for="arrival-delay">Arrival Delay (in Minutes):</label>
+            <input type="number" id="arrival-delay" name="arrival_delay_in_minutes" step="0.1" min="0" required>
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+</body>
+</html>
