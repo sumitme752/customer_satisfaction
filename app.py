@@ -23,41 +23,48 @@ def feedback_form():
     if request.method == "POST":
         try:
             data = {
-                "customer_type": request.form["customer_type"],
-                "age": int(request.form["age"]),
-                "type_of_travel": request.form["type_of_travel"],
-                "class": request.form["class"],
-                "flight_distance": int(request.form["flight_distance"]),
-                "inflight_wifi_service": int(request.form["inflight_wifi_service"]),
-                "departure_arrival_convenience": int(request.form["departure_arrival_convenience"]),
-                "ease_of_online_booking": int(request.form["ease_of_online_booking"]),
-                "gate_location": int(request.form["gate_location"]),
-                "food_and_drink": int(request.form["food_and_drink"]),
-                "online_boarding": int(request.form["online_boarding"]),
-                "seat_comfort": int(request.form["seat_comfort"]),
-                "inflight_entertainment": int(request.form["inflight_entertainment"]),
-                "onboard_service": int(request.form["onboard_service"]),
-                "leg_room_service": int(request.form["leg_room_service"]),
-                "baggage_handling": int(request.form["baggage_handling"]),
-                "checkin_service": int(request.form["checkin_service"]),
-                "inflight_service": int(request.form["inflight_service"]),
-                "cleanliness": int(request.form["cleanliness"]),
-                "departure_delay_in_minutes": int(request.form["departure_delay_in_minutes"]),
-                "arrival_delay_in_minutes": float(request.form["arrival_delay_in_minutes"]),
-            }
+                    "Departure/Arrival time convenient": int(request.form["departure_arrival_convenience"]),
+                    "Inflight wifi service": int(request.form["inflight_wifi_service"]),
+                    "Cleanliness": int(request.form["cleanliness"]),
+                    "Baggage handling": int(request.form["baggage_handling"]),
+                    "Flight Distance": int(request.form["flight_distance"]),
+                    "Leg room service": int(request.form["leg_room_service"]),
+                    "Departure Delay in Minutes": int(request.form["departure_delay_in_minutes"]),
+                    "Arrival Delay in Minutes": float(request.form["arrival_delay_in_minutes"]),
+                    "Ease of Online booking": int(request.form["ease_of_online_booking"]),
+                    "Checkin service": int(request.form["checkin_service"]),
+                    "Age": int(request.form["age"]),
+                    "On-board service": int(request.form["onboard_service"]),
+                    "Online boarding": int(request.form["online_boarding"]),
+                    "Gate location": int(request.form["gate_location"]),
+                    "Food and drink": int(request.form["food_and_drink"]),
+                    "Customer Type": request.form["customer_type"],
+                    "Type of Travel": request.form["type_of_travel"],
+                    "Inflight service": int(request.form["inflight_service"]),
+                    "Seat comfort": int(request.form["seat_comfort"]),
+                    "Inflight entertainment": int(request.form["inflight_entertainment"]),
+                    "Class": request.form["class"],
+                    }
+
 
             # Store the feedback (optional, or use it for logging/debugging)
             feedback_data.append(data)
-            print(feedback_data)
+            # print(feedback_data)
+
 
             # Create a DataFrame for the current input
-            predict_df = pd.DataFrame([data])
+            # Create DataFrame
+            predict_df = pd.DataFrame(feedback_data)
 
             # Make prediction
-            prediction = model.predict(predict_df)[0]  # Get the first prediction
+            prediction = model.predict(predict_df)  # Get the first prediction
+            print(prediction)
+
+            # To convert to a single value or list
+            single_prediction = prediction.tolist()[-1]
 
             # Map prediction result to a meaningful output
-            result = 'Satisfied' if prediction == 1 else 'Neutral or Dissatisfied'
+            result = 'Satisfied' if single_prediction == 1 else 'Neutral or Dissatisfied'
 
             return render_template("result.html", result=result)
 
